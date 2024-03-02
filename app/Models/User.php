@@ -28,6 +28,7 @@ class User extends Authenticatable
         'working',
         'university',
         'phone',
+        'address',
         'country',
         'region',
     ];

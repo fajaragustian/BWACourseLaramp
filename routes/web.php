@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function () {
 
     // Transaction
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
+    // setpaid transaction
+    Route::post('/transactions/{checkout}', [TransactionController::class, 'update'])->name('admin.checkout.update');
     // Resource
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

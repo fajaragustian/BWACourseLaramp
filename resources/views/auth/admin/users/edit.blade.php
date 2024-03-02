@@ -122,6 +122,20 @@
                                 </span>
                                 @enderror
                             </div>
+                            {{-- Address --}}
+                            <div class=" form-group">
+                                <label for="Address" class="form-label ml-2">Address</label>
+                                <input type="text"
+                                    class="form-control form-control-user @error('address') is-invalid @enderror"
+                                    name="address" required autocomplete="Address" id="Address"
+                                    aria-describedby="address" placeholder="Enter Your Address"
+                                    value="{{ $user->address ?? old('address') }}">
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                             {{-- Country --}}
                             <div class=" form-group">
                                 <label for="Country" class="form-label ml-2">Country</label>

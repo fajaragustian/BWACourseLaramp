@@ -77,6 +77,13 @@
                                 autocomplete="Phone" id="Phone" aria-describedby="phone" value="{{ $user->phone}}"
                                 readonly>
                         </div>
+                        {{-- Address --}}
+                        <div class=" form-group">
+                            <label for="Address" class="form-label ml-2">Address</label>
+                            <input type="text" class="form-control form-control-user" name="address" required
+                                autocomplete="Address" id="Address" aria-describedby="address"
+                                value="{{ $user->address }}" readonly>
+                        </div>
                         {{-- Country --}}
                         <div class=" form-group">
                             <label for="Country" class="form-label ml-2">Country</label>

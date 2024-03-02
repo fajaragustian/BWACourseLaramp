@@ -33,6 +33,7 @@ class HomeController extends Controller
             'working' => 'required|string|min:2',
             'university' => 'nullable|string|min:5',
             'phone' => 'required|numeric|min_digits:9',
+            'address' => 'required|string|min:4',
             'country' => 'required|string|min:4',
             'region' => 'required|string|min:4',
         ]);

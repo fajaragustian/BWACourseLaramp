@@ -38,6 +38,14 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if (!$p->is_paid)
+                                    @role('Super Admin|Admin')
+                                    <form action="{!! route('admin.checkout.update' , $p->id) !!}" method="post">
+                                        @csrf
+                                        <button class="btn-primary btn">Set Paid To Payment</button>
+                                    </form>
+                                    @endif
+                                    @else
                                     @if ($p->is_paid)
                                     <a href="#" class="btn btn-primary">
                                         Get Invoice
@@ -47,6 +55,10 @@
                                         Paid Payment
                                     </a>
                                     @endif
+                                    @endrole
+
+
+
 
                                 </td>
                             </tr>

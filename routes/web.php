@@ -38,7 +38,8 @@ Route::get('login/google/callback', [SocialliteController::class, 'callback'])
     ->middleware(['guest'])
     ->name('callback');
 
-
+Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
+Route::post('payment/success', [CheckoutController::class, 'midtransCallback']);
 
 // Admin
 Route::middleware('auth')->group(function () {

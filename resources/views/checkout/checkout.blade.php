@@ -69,42 +69,32 @@
                                 @enderror
                             </div>
                             <div class=" mb-4">
-                                <label class="form-label">Card Number</label>
-                                <input name="card_number" type="number"
-                                    class="form-control @error('card_number') is-invalid @enderror" required
-                                    maxlangth="16" value="{{ old('card_number') }}">
-                                @error('card_number')
+                                <label class="form-label">Phone</label>
+                                <input name="phone" type="number"
+                                    class="form-control @error('phone') is-invalid @enderror"
+                                    value="{{old('phone') ?: Auth::user()->phone }}" value="{{ old('phone') }}"
+                                    required>
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
-                            <div class="mb-5">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label">Expired</label>
-                                        <input name="expired" type="month"
-                                            class="form-control @error('expired') is-invalid @enderror" required
-                                            value="{{ old('expired') }}">
-                                        @error('expired')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <label class="form-label">CVC</label>
-                                        <input name="cvc" type="number"
-                                            class="form-control @error('cvc') is-invalid @enderror" required
-                                            maxlength="3">
-                                        @error('cvc')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div class=" mb-4">
+                                <label class="form-label">Address</label>
+                                <textarea name="address" type="text"
+                                    class="form-control @error('address') is-invalid @enderror"
+                                    value="{{old('address') ?: Auth::user()->address }}" value="{{ old('address') }}"
+                                    required>
+                                </textarea>
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
+
+
                             <button type="submit" class="w-100 btn btn-primary">Paynow</button>
                             <p class="text-center subheader mt-4">
                                 <img src="{{ asset('/assets/images/ic_secure.svg') }}" alt=""> Your payment is secure

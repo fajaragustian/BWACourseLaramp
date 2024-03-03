@@ -31,31 +31,25 @@
                                 <td>{{$p->created_at->format('M d, Y')}}</td>
                                 <td>Rp.{{ $p->camp->price }}</td>
                                 <td>
-                                    @if ($p->is_paid)
+                                    @if ($p->payment_status == 'paid')
                                     <strong class="text-primary"> Success Payment </strong>
+                                    @elseif($p->payment_status == 'expired')
+                                    <strong class="text-danger">Failed for Payment</strong>
                                     @else
                                     <strong class="text-warning">Waiting for Payment</strong>
                                     @endif
                                 </td>
                                 <td>
-                                    @if (!$p->is_paid)
-                                    @role('Super Admin|Admin')
-                                    <form action="{!! route('admin.checkout.update' , $p->id) !!}" method="post">
-                                        @csrf
-                                        <button class="btn-primary btn">Set Paid To Payment</button>
-                                    </form>
-                                    @endif
-                                    @else
-                                    @if ($p->is_paid)
+                                    @if ($p->payment_status == 'paid')
                                     <a href="#" class="btn btn-primary">
                                         Get Invoice
                                     </a>
                                     @else
                                     <a href="#" class="btn btn-primary text-white">
-                                        Paid Payment
+                                        Delete
                                     </a>
                                     @endif
-                                    @endrole
+
 
 
 

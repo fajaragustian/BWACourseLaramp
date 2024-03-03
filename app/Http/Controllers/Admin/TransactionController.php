@@ -26,7 +26,7 @@ class TransactionController extends Controller
     }
     public function update(Request $request, Checkout $checkout)
     {
-        $checkout->is_paid = true;
+        $checkout->payment_status;
         $checkout->save();
         // send mail
         Mail::to($checkout->User->email)->send(new Paid($checkout));

@@ -1,9 +1,11 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
+// import { ngrok } from "vite-plugin-ngrok";
 import path from "path";
 
 export default defineConfig({
     plugins: [
+        // ngrok("2d84UZ0CGYZ3KjWvMZvdI4VL4yh_wiJaUa57fHJG7To3MgcH"),
         laravel({
             input: [
                 "resources/template/auth/css/sb-admin-2.min.css",

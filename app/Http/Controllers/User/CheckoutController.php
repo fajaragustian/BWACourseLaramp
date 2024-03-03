@@ -48,6 +48,8 @@ class CheckoutController extends Controller
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->working = $data['working'];
+        $user->phone = $data['phone'];
+        $user->address = $data['address'];
         //save data user
         $user->save();
         // create checkout
@@ -71,7 +73,7 @@ class CheckoutController extends Controller
     public function getSnapRedirect(Checkout $checkout)
     {
         // $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' . mt_rand(100000, 999999);
-        $orderId =  $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' . Str::random(5);
+        $orderId =  $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' .  Str::random(9);
         $price = $checkout->Camp->price;
         $checkout->midtrans_booking_code = $orderId;
         $transaction_details = [

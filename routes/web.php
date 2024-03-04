@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\SocialliteController;
 use App\Http\Controllers\Admin\ProductController;
@@ -59,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
     // setpaid transaction
     Route::post('/transactions/{checkout}', [TransactionController::class, 'update'])->name('admin.checkout.update');
+    // Discount
+    Route::resource('discounts', DiscountController::class);
     // Resource
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

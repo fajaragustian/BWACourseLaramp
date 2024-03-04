@@ -69,7 +69,19 @@
                                 @enderror
                             </div>
                             <div class=" mb-4">
-                                <label class="form-label">Phone</label>
+                                <label class="form-label">Discount Code</label>
+                                <input name="discount" type="text"
+                                    class="form-control @error('discount') is-invalid @enderror"
+                                    value="{{old('discount') ?: Auth::user()->discount }}" value="{{ old('discount') }}"
+                                    required>
+                                @error('discount')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class=" mb-4">
+                                <label class="form-label">Discount Code</label>
                                 <input name="phone" type="number"
                                     class="form-control @error('phone') is-invalid @enderror"
                                     value="{{old('phone') ?: Auth::user()->phone }}" value="{{ old('phone') }}"

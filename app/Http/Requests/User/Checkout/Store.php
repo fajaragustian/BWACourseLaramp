@@ -34,6 +34,7 @@ class Store extends FormRequest
             'working' => 'required|string',
             'phone' => 'required|numeric|min_digits:9',
             'address' => 'required|string|min:4',
+            'discount' => 'nullable|string|exists:discounts,code,deleted_at,NULL',
             // 'card_number' => 'required|numeric|digits_between:8,16',
             // 'expired' => 'required|date|date_format:Y-m|after_or_equal:' . $expiredValidation,
             // 'cvc' => 'required|numeric|digits:3',

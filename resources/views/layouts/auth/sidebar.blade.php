@@ -62,6 +62,11 @@
             <i class="fas fa-fw fa-users"></i>
             <span>Manage Product</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('discounts.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Manage Discount</span></a>
+    </li>
     @elserole(['Admin'])
     <!-- Nav Item - -->
     <li class="nav-item">
@@ -73,6 +78,11 @@
         <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Manage Product</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('discounts.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Manage Discount</span></a>
     </li>
     @endrole
     <!-- Nav Item -  -->

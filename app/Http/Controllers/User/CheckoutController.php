@@ -7,6 +7,7 @@ use App\Http\Requests\User\Checkout\Store;
 use App\Mail\Checkout\AfterCheckout;
 use App\Models\Camp;
 use App\Models\Checkout;
+use App\Models\Discount;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -52,6 +53,15 @@ class CheckoutController extends Controller
         $user->address = $data['address'];
         //save data user
         $user->save();
+
+        //create discounts
+        if ($request->discount) {
+            // jika dia mendapat discount lalu mengambil datanya
+            $discount = Discount::whereCode($request->discount)->first();
+            //
+            $data['discount_id'] = $discount->id;
+            $data['discount_percentage'] = $discount->percentage;
+        }
         // create checkout
         $checkout = Checkout::Create($data);
         $this->getSnapRedirect($checkout);
@@ -76,22 +86,34 @@ class CheckoutController extends Controller
         $orderId =  $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' .  Str::random(9);
         $price = $checkout->Camp->price;
         $checkout->midtrans_booking_code = $orderId;
-        $transaction_details = [
-            'order_id' => $orderId,
-            // Jika dolar
-            // 'gross_amount' => $checkout->Camp->price * 1000,
-            'gross_amount' => $checkout->Camp->price,
-        ];
+
         $item_details[] = [
             'id' => $orderId,
             'price' => $price,
             'quantity' => 1,
             'name' => "Payment for {$checkout->Camp->title} Camp"
         ];
+        $discountPrice = 0;
+        if ($checkout->Discount) {
+            $discountPrice = $price * $checkout->discount_percentage / 100;
+            $item_details[] = [
+                'id' => $checkout->Discount->code,
+                'price' => -$discountPrice,
+                'quantity' => 1,
+                'name' => "Discount Vouchers {$checkout->Discount->name} ({$checkout->discount_percentage}%)"
+            ];
+        }
+        $total = $price - $discountPrice;
+        $transaction_details = [
+            'order_id' => $orderId,
+            // Jika dolar
+            // 'gross_amount' => $checkout->Camp->price * 1000,
+            'gross_amount' => $total,
+        ];
         $userData = [
             'first_name' => $checkout->User->name,
             'last_name' => "",
-            'address' => "",
+            'address' => $checkout->User->address,
             'city' => "",
             'region' => "",
             'postal_code' => "",
@@ -115,6 +137,7 @@ class CheckoutController extends Controller
             // get snap payment url
             $paymentUrl = \Midtrans\Snap::createTransaction($midtrans_params)->redirect_url;
             $checkout->midtrans_url = $paymentUrl;
+            $checkout->total = $total;
             $checkout->save();
             return $paymentUrl;
         } catch (Exception $e) {

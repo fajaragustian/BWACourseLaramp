@@ -29,7 +29,13 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $p->camp->title }}</td>
                                 <td>{{$p->created_at->format('M d, Y')}}</td>
-                                <td>Rp.{{ $p->camp->price }}</td>
+                                <td>Rp.{{ $p->total }}
+                                    @if ($p->discount_id)
+                                    <span class="badge bg-success text-light"> Disc {{ $p->discount_percentage
+                                        }}%</span>
+
+                                    @endif
+                                </td>
                                 <td>
                                     @if ($p->payment_status == 'paid')
                                     <strong class="text-primary"> Success Payment </strong>

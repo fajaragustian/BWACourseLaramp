@@ -50,11 +50,11 @@ Route::middleware('auth')->group(function () {
     Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
     Route::get('checkout/invoice/{checkout}', [CheckoutController::class, 'invoice'])->name('checkout.invoice');
     // Password
-    Route::get('/admin/change-password', [HomeController::class, 'changePassword'])->name('admin-change-password');
-    Route::post('/admin/change-password', [HomeController::class, 'updatePassword'])->name('admin-update-password');
+    Route::get('/change-password', [UserController::class, 'changePassword'])->name('change-password');
+    Route::post('/change-password', [UserController::class, 'updatePassword'])->name('update-password');
     // Profile
-    Route::get('/admin/change-profile', [HomeController::class, 'changeProfile'])->name('admin-change-profile');
-    Route::patch('/admin/change-profile/{id}', [HomeController::class, 'updateProfile'])->name('admin-update-profile');
+    Route::get('/change-profile', [UserController::class, 'changeProfile'])->name('change-profile');
+    Route::patch('/change-profile/{id}', [UserController::class, 'updateProfile'])->name('update-profile');
 
     // Transaction
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');

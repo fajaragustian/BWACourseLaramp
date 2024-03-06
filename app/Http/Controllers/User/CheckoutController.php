@@ -17,7 +17,7 @@ use Midtrans;
 
 class CheckoutController extends Controller
 {
-    //Midtrans
+    // Midtrans
     public function __construct()
     {
         \Midtrans\Config::$serverKey    = env('MIDTRANS_SERVERKEY');
@@ -25,18 +25,17 @@ class CheckoutController extends Controller
         \Midtrans\Config::$isSanitized  = env('MIDTRANS_IS_SANITIZED');
         \Midtrans\Config::$is3ds        = env('MIDTRANS_IS_3DS');
     }
-
+    // Create view with validation register camp
     public function create(Camp $camp, Request $request)
     {
-
-        // memanggil attribute pada model
+        // memanggil attribute pada model untuk validation
         if ($camp->isRegistered) {
-            $request->session()->flash('error', "You Already registered on {$camp->title} camp.");
-            return redirect(route('home'));
+            return redirect()->route('home')
+                ->with('warning', "You Already registered on {$camp->title} camp");
         }
-
         return view('checkout.checkout', ['camp' => $camp]);
     }
+    // Request pendaftaran camp
     public function store(Store $request, Camp $camp)
     {
         //mapping request data
@@ -53,7 +52,6 @@ class CheckoutController extends Controller
         $user->address = $data['address'];
         //save data user
         $user->save();
-
         //create discounts
         if ($request->discount) {
             // jika dia mendapat discount lalu mengambil datanya
@@ -69,31 +67,33 @@ class CheckoutController extends Controller
         Mail::to(Auth::user()->email)->send(new AfterCheckout($checkout));
         return redirect(route('checkout.success'));
     }
+    // View Checkout Success
     public function success()
     {
-        //
         return view('checkout.checkout-success');
     }
+    // View Invoice Success
     public function invoice(Checkout $checkout)
     {
-        //
         return $checkout;
     }
     // Redirect Midtrans Handler
     public function getSnapRedirect(Checkout $checkout)
     {
         // $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' . mt_rand(100000, 999999);
-        $orderId =  $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' .  Str::random(9);
+        $orderId =  $checkout->midtrans_booking_code =  'CAMP-' . $checkout->id . Str::random(9);
         $price = $checkout->Camp->price;
         $checkout->midtrans_booking_code = $orderId;
-
+        // item detail for midtrans
         $item_details[] = [
             'id' => $orderId,
             'price' => $price,
             'quantity' => 1,
             'name' => "Payment for {$checkout->Camp->title} Camp"
         ];
+        // default discount 0
         $discountPrice = 0;
+        // jika punya discount maka di proses
         if ($checkout->Discount) {
             $discountPrice = $price * $checkout->discount_percentage / 100;
             $item_details[] = [
@@ -103,7 +103,9 @@ class CheckoutController extends Controller
                 'name' => "Discount Vouchers {$checkout->Discount->name} ({$checkout->discount_percentage}%)"
             ];
         }
+        // menghitung total setelah discount
         $total = $price - $discountPrice;
+        // transaction detail
         $transaction_details = [
             'order_id' => $orderId,
             // Jika dolar
@@ -144,6 +146,7 @@ class CheckoutController extends Controller
             return false;
         }
     }
+    // untuk menghandle midtrans callback jika terjadi error
     public function midtransCallback(Request $request)
     {
         $notif = $request->method() == 'POST' ? new Midtrans\Notification() : Midtrans\Transaction::status($request->order_id);

@@ -26,12 +26,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 pt-md-2">
-                        @if ($user->avatar)
+                        @if ($user->avatar != null)
+                        <img src="{{ asset('storage/photos/'.$user->avatar ) }}"
+                            class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px"
+                            title="profile">
+                        @else
                         <img src=" https://ui-avatars.com/api/?name={{ Auth::user()->name }}/?rounded=true"
                             class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px">
-                        @else
-                        <img class="img-thumbnail rounded mx-auto d-block"
-                            src="{{ asset('template/auth/img/undraw_profile.svg') }}">
                         @endif
 
                     </div>

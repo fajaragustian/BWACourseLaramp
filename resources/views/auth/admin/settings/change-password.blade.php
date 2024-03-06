@@ -25,7 +25,7 @@
                         src="img/undraw_posting_photo.svg" alt="..."> --}}
                     @include('components.flash-message')
                 </div>
-                <form class="user" method="POST" action="{{ route('admin-update-password') }}">
+                <form class="user" method="POST" action="{{ route('update-password') }}">
                     @csrf
                     <div class=" form-group">
                         <label for="oldPasswordInput" class="form-label ml-2">Old Password</label>

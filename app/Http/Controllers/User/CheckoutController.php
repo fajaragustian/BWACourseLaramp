@@ -81,7 +81,7 @@ class CheckoutController extends Controller
     public function getSnapRedirect(Checkout $checkout)
     {
         // $checkout->midtrans_booking_code = $checkout->id . 'CAMP-' . mt_rand(100000, 999999);
-        $orderId =  $checkout->midtrans_booking_code =  'CAMP-' . $checkout->id . Str::random(9);
+        $orderId =  $checkout->midtrans_booking_code =  $checkout->id . 'CAMP-'  . Str::random(9);
         $price = $checkout->Camp->price;
         $checkout->midtrans_booking_code = $orderId;
         // item detail for midtrans

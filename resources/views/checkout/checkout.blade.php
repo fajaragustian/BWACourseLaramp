@@ -38,7 +38,7 @@
                                 <input name="name" type="text" {{--
                                     class="form-control {{ $errors->has('name') ? 'is-invalid' : ''  }}" --}}
                                     class="form-control @error('name') is-invalid @enderror"
-                                    value="{{ Auth::user()->name }}" required>
+                                    value="{{ Auth::user()->name ?: old('name') }}" required>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
@@ -47,9 +47,9 @@
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Email Address</label>
-                                <input name="email" type="email"
+                                <input name="email" type="email" readonly
                                     class="form-control @error('email') is-invalid @enderror"
-                                    value="{{ Auth::user()->email }}" required>
+                                    value="{{ Auth::user()->email ?: old('email') }}" required>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
@@ -60,8 +60,7 @@
                                 <label class="form-label">Working</label>
                                 <input name="working" type="text"
                                     class="form-control @error('working') is-invalid @enderror"
-                                    value="{{old('working') ?: Auth::user()->working }}" value="{{ old('working') }}"
-                                    required>
+                                    value="{{old('working') ?: Auth::user()->working }}" required>
                                 @error('working')
                                 <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
@@ -72,20 +71,18 @@
                                 <label class="form-label">Discount Code</label>
                                 <input name="discount" type="text"
                                     class="form-control @error('discount') is-invalid @enderror"
-                                    value="{{old('discount') ?: Auth::user()->discount }}" value="{{ old('discount') }}"
-                                    required>
+                                    value="{{old('discount') ?: Auth::user()->discount }}">
                                 @error('discount')
-                                <span class="invalid-feedback" role="alert">
+                                <span class=" invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
                             <div class=" mb-4">
-                                <label class="form-label">Discount Code</label>
+                                <label class="form-label">Phone</label>
                                 <input name="phone" type="number"
                                     class="form-control @error('phone') is-invalid @enderror"
-                                    value="{{old('phone') ?: Auth::user()->phone }}" value="{{ old('phone') }}"
-                                    required>
+                                    value="{{old('phone') ?: Auth::user()->phone }}" required>
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong class="text-danger ml-5 mt-2">{{ $message }}</strong>
@@ -95,9 +92,7 @@
                             <div class=" mb-4">
                                 <label class="form-label">Address</label>
                                 <textarea name="address" type="text"
-                                    class="form-control @error('address') is-invalid @enderror"
-                                    value="{{old('address') ?: Auth::user()->address }}" value="{{ old('address') }}"
-                                    required>
+                                    class="form-control @error('address') is-invalid @enderror" required>{{old('address') ?: Auth::user()->address }}
                                 </textarea>
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">

@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class DiscountController extends Controller
 {
+    public function __construct()
+    //  Add Permission Access
+    {
+        $this->middleware('permission:list-discount|create-discount|edit-discount|delete-discount', ['only' => ['index', 'store']]);
+        $this->middleware('permission:create-discount', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-discount', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-discount', ['only' => ['destroy']]);
+    }
     // Discounts
     public function index()
     {
@@ -41,14 +49,14 @@ class DiscountController extends Controller
     {
         //
         $discount->update($request->all());
-        return redirect()->route('discounts.index')
-            ->with('success', "A Update Discounts {{$discount->name}} has been updated");
+        return redirect()->back()
+            ->with('success', "A Update {$discount->name} has been updated");
     }
     // Request delete with product
     public function destroy(Discount $discount, Request $request)
     {
         $discount->delete();
         return redirect()->route('discounts.index')
-            ->with('success', "A Update Discounts {{$discount->name}} has been deleted");
+            ->with('success', "A Deleted {$discount->name} has been deleted");
     }
 }

@@ -20,20 +20,12 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    {{-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="img/undraw_posting_photo.svg" alt="..."> --}}
-                    @include('components.flash-message')
                 </div>
                 <div class="row">
                     <div class="col-md-4 pt-md-2">
-                        @if ($user->avatar)
-                        <img src=" https://ui-avatars.com/api/?name={{ Auth::user()->name }}/?rounded=true"
-                            class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px">
-                        @else
-                        <img class="img-thumbnail rounded mx-auto d-block"
-                            src="{{ asset('template/auth/img/undraw_profile.svg') }}">
-                        @endif
-
+                        <img src="{{ asset('/template/auth/img/undraw_profile.svg' ) }}"
+                            class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px"
+                            title="profile">
                     </div>
                     <div class="col-md-8">
                         <form class="user" method="POST" action="{{ route('users.store') }}"
@@ -84,9 +76,8 @@
                                 <label for="Working" class="form-label ml-2">Working</label>
                                 <input type="text"
                                     class="form-control form-control-user @error('working') is-invalid @enderror"
-                                    name="working" required autocomplete="Working" id="Working"
-                                    aria-describedby="Working" placeholder="Enter Your Working"
-                                    value="{{ old('working') }}">
+                                    name="working" autocomplete="Working" id="Working" aria-describedby="Working"
+                                    placeholder="Enter Your Working" value="{{ old('working') }}">
                                 @error('working')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -98,7 +89,7 @@
                                 <label for="University" class="form-label ml-2">University</label>
                                 <input type="text"
                                     class="form-control form-control-user @error('university') is-invalid @enderror"
-                                    name="university" required autocomplete="University" id="University"
+                                    name="university" autocomplete="University" id="University"
                                     aria-describedby="university" placeholder="Enter Your University"
                                     value="{{ old('university') }}">
                                 @error('university')
@@ -112,7 +103,7 @@
                                 <label for="Phone" class="form-label ml-2">Phone</label>
                                 <input type="number"
                                     class="form-control form-control-user @error('phone') is-invalid @enderror"
-                                    name="phone" required autocomplete="Phone" id="Phone" aria-describedby="phone"
+                                    name="phone" autocomplete="Phone" id="Phone" aria-describedby="phone"
                                     placeholder="Enter Your Number Phone" maxlength="15" value="{{ old('phone') }}">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -120,14 +111,13 @@
                                 </span>
                                 @enderror
                             </div>
-                            {{-- Country --}}
+                            {{-- Address --}}
                             <div class=" form-group">
                                 <label for="Address" class="form-label ml-2">Address</label>
                                 <input type="text"
                                     class="form-control form-control-user @error('address') is-invalid @enderror"
-                                    name="address" required autocomplete="Address" id="Address"
-                                    aria-describedby="address" placeholder="Enter Your Address"
-                                    value="{{ old('address') }}">
+                                    name="address" autocomplete="Address" id="Address" aria-describedby="address"
+                                    placeholder="Enter Your Address" value="{{ old('address') }}">
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -139,9 +129,8 @@
                                 <label for="Country" class="form-label ml-2">Country</label>
                                 <input type="text"
                                     class="form-control form-control-user @error('country') is-invalid @enderror"
-                                    name="country" required autocomplete="Country" id="Country"
-                                    aria-describedby="country" placeholder="Enter Your Country"
-                                    value="{{ old('country') }}">
+                                    name="country" autocomplete="Country" id="Country" aria-describedby="country"
+                                    placeholder="Enter Your Country" value="{{ old('country') }}">
                                 @error('country')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -153,7 +142,7 @@
                                 <label for="region" class="form-label ml-2">Region</label>
                                 <input type="text"
                                     class="form-control form-control-user @error('region') is-invalid @enderror"
-                                    name="region" required autocomplete="Region" id="Region" aria-describedby="Region"
+                                    name="region" autocomplete="Region" id="Region" aria-describedby="Region"
                                     placeholder="Enter Your password" value="{{ old('region') }}">
                                 @error('region')
                                 <span class="invalid-feedback" role="alert">

@@ -1,5 +1,5 @@
 @extends('layouts.auth.main')
-@section('title','Dashboard Transactions')
+@section('title','Dashboard Manage Camps')
 @section('content')
 <!-- Content Row -->
 <div class="row">
@@ -8,13 +8,14 @@
         <!-- Illustrations -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Transaction</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Manage Camps</h6>
             </div>
             <div class="card-body">
-                @can('create-product')
-                <a href="{{ route('products.create') }}" class="btn btn-success btn-sm my-2"><i
+                @include('components.flash-message')
+                @can('create-camp')
+                <a href="{{ route('camps.create') }}" class="btn btn-success btn-sm my-2"><i
                         class="bi bi-plus-circle"></i> Add New
-                    Product</a>
+                    Camps</a>
                 @endcan
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
@@ -22,31 +23,33 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Description</th>
+                                <th scope="col">Slug</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Updated</th>
                                 <th scope="col" style="width: 250px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($products as $key => $product )
+                            @forelse ($camp as $key => $c )
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $product->name }}</td>
-                                <td>{!! Str::limit($product->description,50) !!}</td>
-                                <td>{{ $product->updated_at }}</td>
+                                <td>{{ $c->title }}</td>
+                                <td>{!! Str::limit($c->slug,50) !!}</td>
+                                <td>{{ $c->price }}</td>
+                                <td>{{ $c->updated_at }}</td>
                                 <td>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                    <form action="{{ route('camps.destroy', $c->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('products.show', $product->id) }}"
-                                            class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                        <a href="{{ route('camps.show', $c->id) }}" class="btn btn-warning btn-sm"><i
+                                                class="bi bi-eye"></i> Show</a>
                                         {{-- Edit Users --}}
-                                        @can('edit-product')
-                                        <a href="{{ route('products.edit', $product->id) }}"
-                                            class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                                        @can('edit-camp')
+                                        <a href="{{ route('camps.edit', $c->id) }}" class="btn btn-primary btn-sm"><i
+                                                class="bi bi-pencil-square"></i> Edit</a>
                                         @endcan
                                         {{-- Delete Users --}}
-                                        @can('delete-product')
+                                        @can('delete-camp')
                                         <button type="submit" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Do you want to delete this product?');"><i
                                                 class="bi bi-trash"></i>
@@ -67,7 +70,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Detail</th>
+                                <th scope="col">Slug</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Updated</th>
                                 <th scope="col" style="width: 250px;">Action</th>
                             </tr>
@@ -75,7 +79,7 @@
                     </table>
 
 
-                    {{ $products->links() }}
+                    {{ $camp->links() }}
                 </div>
             </div>
         </div>

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Mail;
 
 class TransactionController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:list-product|create-product|edit-product|delete-product', ['only' => ['index', 'store']]);
-    //     $this->middleware('permission:create-product', ['only' => ['create', 'store']]);
-    //     $this->middleware('permission:edit-product', ['only' => ['edit', 'update']]);
-    //     $this->middleware('permission:delete-product', ['only' => ['destroy']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('permission:list-transaction|create-transaction|edit-transaction|delete-transaction', ['only' => ['index', 'store']]);
+        $this->middleware('permission:create-transaction', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-transaction', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-transaction', ['only' => ['destroy']]);
+    }
     // Transaction
     public function index()
     {
@@ -32,6 +32,6 @@ class TransactionController extends Controller
         // send mail
         Mail::to($checkout->User->email)->send(new Paid($checkout));
         return redirect()->route('transaction.index')
-            ->with('success', "Checkout With ID {{$checkout->id}} has been Updated!");
+            ->with('success', "Checkout With ID {$checkout->id} has been Updated!");
     }
 }

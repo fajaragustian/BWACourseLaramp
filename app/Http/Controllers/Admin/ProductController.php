@@ -66,7 +66,7 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
         $product->update($request->all());
-        return redirect()->route('products.index')
+        return redirect()->back()
             ->with('success', 'Product updated successfully');
     }
     //  Request Delete Product

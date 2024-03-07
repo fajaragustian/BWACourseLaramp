@@ -14,23 +14,20 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('permission:list-user|create-user|edit-user|delete-user', ['only' => ['index', 'store']]);
+        $this->middleware('permission:create-user', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-user', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-user', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         //
         $data = User::latest()->paginate(5);
         return view('auth.admin.users.index', compact('data'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -39,12 +36,6 @@ class UserController extends Controller
         return view('auth.admin.users.create', compact('roles', 'user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
@@ -56,12 +47,12 @@ class UserController extends Controller
                 'username' => 'nullable|min:2|unique:users,username',
                 'password' => 'required|same:confirm-password|min_digits:8',
                 'avatar' => 'nullable|image|max:1024',
-                'working' => 'required|string|min:2',
+                'working' => 'nullable|string|min:2',
                 'university' => 'nullable|string|min:5',
-                'phone' => 'required|numeric|min_digits:9',
-                'address' => 'required|string|min:4',
-                'country' => 'required|string|min:4',
-                'region' => 'required|string|min:4',
+                'phone' => 'nullable|numeric|min_digits:9',
+                'address' => 'nullable|string|min:4',
+                'country' => 'nullable|string|min:4',
+                'region' => 'nullable|string|min:4',
                 'roles' => 'required'
             ]
         );
@@ -75,12 +66,6 @@ class UserController extends Controller
             ->with('success', 'User created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -89,12 +74,6 @@ class UserController extends Controller
         return view('auth.admin.users.show', compact('user', 'roles'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
@@ -105,13 +84,6 @@ class UserController extends Controller
         return view('auth.admin.users.edit', compact('user', 'roles', 'userRole'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
@@ -123,12 +95,12 @@ class UserController extends Controller
                 'username' => 'nullable|min:2|unique:users,username,' . $id,
                 'password' => 'same:confirm-password',
                 'avatar' => 'nullable|image|max:1024',
-                'working' => 'required|string|min:2',
+                'working' => 'nullable|string|min:2',
                 'university' => 'nullable|string|min:5',
-                'phone' => 'required|numeric|min_digits:9',
-                'address' => 'required|string|min:4',
-                'country' => 'required|string|min:4',
-                'region' => 'required|string|min:4',
+                'phone' => 'nullable|numeric|min_digits:9',
+                'address' => 'nullable|string|min:4',
+                'country' => 'nullable|string|min:4',
+                'region' => 'nullable|string|min:4',
                 'roles' => 'required'
             ]
         );
@@ -154,16 +126,10 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
         $user->assignRole($request->input('roles'));
-        return redirect()->route('users.index')
+        return redirect()->back()
             ->with('success', 'User updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
@@ -185,12 +151,12 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'username' => 'nullable|min:2|unique:users,username,' . $id,
             'avatar' => 'nullable|image|max:1024',
-            'working' => 'required|string|min:2',
+            'working' => 'nullable|string|min:2',
             'university' => 'nullable|string|min:5',
-            'phone' => 'required|numeric|min_digits:9',
-            'address' => 'required|string|min:4',
-            'country' => 'required|string|min:4',
-            'region' => 'required|string|min:4',
+            'phone' => 'nullable|numeric|min_digits:9',
+            'address' => 'nullable|string|min:4',
+            'country' => 'nullable|string|min:4',
+            'region' => 'nullable|string|min:4',
         ]);
 
         $user = User::find($id);

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Camp extends Model
 {
-    use HasFactory, SoftDeletes;
-    protected $fillable = ['title', 'price'];
+    use HasFactory, SoftDeletes, ;
+    protected $fillable = ['title', 'price', 'image'];
     // Jika user sebut sudah terdafatar pada kelas tersebut maka tidak bisa kembali
     public function getIsRegisteredAttribute()
     {

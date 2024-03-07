@@ -19,6 +19,7 @@ class RoleTableSeeder extends Seeder
         $superAdmin = Role::create(['name' => 'Super Admin']);
         $admin = Role::create(['name' => 'Admin']);
         $productManager = Role::create(['name' => 'Product Manager']);
+        $user = Role::create(['name' => 'User']);
         $superAdmin->givePermissionTo([
             'list-role',
             'create-role',
@@ -31,7 +32,19 @@ class RoleTableSeeder extends Seeder
             'list-product',
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            'list-discount',
+            'create-discount',
+            'edit-discount',
+            'delete-discount',
+            'list-transaction',
+            'create-transaction',
+            'edit-transaction',
+            'delete-transaction',
+            'list-camp',
+            'create-camp',
+            'edit-camp',
+            'delete-camp',
         ]);
         $admin->givePermissionTo([
             'list-role',
@@ -42,7 +55,12 @@ class RoleTableSeeder extends Seeder
             'list-product',
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            'list-discount',
+            'create-discount',
+            'edit-discount',
+            'delete-discount',
+            'list-transaction',
         ]);
 
         $productManager->givePermissionTo([

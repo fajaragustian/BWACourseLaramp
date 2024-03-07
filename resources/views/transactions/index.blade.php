@@ -33,7 +33,6 @@
                                     @if ($p->discount_id)
                                     <span class="badge bg-success text-light"> Disc {{ $p->discount_percentage
                                         }}%</span>
-
                                     @endif
                                 </td>
                                 <td>
@@ -50,16 +49,12 @@
                                     <a href="#" class="btn btn-primary">
                                         Get Invoice
                                     </a>
-                                    @else
-                                    <a href="#" class="btn btn-primary text-white">
-                                        Delete
+                                    @endif
+                                    @if ($p->payment_status == 'waiting')
+                                    <a href="{{  $p->midtrans_url }}" class="btn btn-primary text-white">
+                                        Paid to Payment
                                     </a>
                                     @endif
-
-
-
-
-
                                 </td>
                             </tr>
                             @empty

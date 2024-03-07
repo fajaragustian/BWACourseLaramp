@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CampController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\SocialliteController;
@@ -66,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('camps', CampController::class);
 });
 // Route::group(['middleware' => ['role:Superadmin|Admin'], 'prefix' => 'Admin' , 'as' => 'admin.'], function () {
 // Route::group(['prefix' => 'car-type', 'as' => 'car-type.'], function () {

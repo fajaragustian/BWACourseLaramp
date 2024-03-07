@@ -8,9 +8,11 @@
         <!-- Illustrations -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                @include('components.flash-message')
                 <h6 class="m-0 font-weight-bold text-primary">Manage Discounts</h6>
             </div>
             <div class="card-body">
+
                 @can('create-product')
                 <a href="{{ route('discounts.create') }}" class="btn btn-success btn-sm my-2"><i
                         class="bi bi-plus-circle"></i> Add New
@@ -47,14 +49,13 @@
                                     <form action="{{ route('discounts.destroy', $d->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('discounts.show', $d->id) }}"
-                                            class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                                        {{-- Edit Users --}}
+
+                                        {{-- Edit Discount --}}
                                         @can('edit-product')
                                         <a href="{{ route('discounts.edit', $d->id) }}"
                                             class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
                                         @endcan
-                                        {{-- Delete Users --}}
+                                        {{-- Delete Discount --}}
                                         @can('delete-product')
                                         <button type="submit" class="btn btn-danger btn-sm"
                                             onclick="return confirm('Do you want to delete this product?');"><i
@@ -76,7 +77,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Detail</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Percentage</th>
                                 <th scope="col">Updated</th>
                                 <th scope="col" style="width: 250px;">Action</th>
                             </tr>

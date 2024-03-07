@@ -11,7 +11,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Manage Roles</h6>
             </div>
             <div class="card-body">
-
+                @include('components.flash-message')
                 @can('create-role')
                 <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm my-2"><i
                         class="bi bi-plus-circle"></i> Add New

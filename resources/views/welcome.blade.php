@@ -1,5 +1,5 @@
 @extends('layouts.frontend.main')
-@section('title','Course Laracamp')
+@section('title','Skill Sphere')
 @section('content')
 
 <section class="banner">
@@ -12,15 +12,15 @@
                             LEARN FROM EXPERT
                         </p>
                         <h1 class="header">
-                            Start Your <span class="text-purple">Developer <br> Journey</span> Today
+                            Start your career <span class="text-purple"> as a professional <br>mobile </span>technician
                         </h1>
                         <p class="support">
-                            Our bootcamp is helping junior developers who <br> are really passionate in the
-                            programming.
+                            Launch your career as a skilled mobile technician <br> with our specialized bootcamp.
+                            Explore our expert-led courses today!
                         </p>
                         <p class="cta">
-                            <a href="#" class="btn btn-master btn-primary">
-                                Get Started
+                            <a href="#" class="btn btn-master btn-primary-custom">
+                                Join Today
                             </a>
                         </p>
                     </div>
@@ -34,14 +34,12 @@
         </div>
         <div class="row brands">
             <div class="col-lg-12 col-12 text-center">
-                <img src="{{ asset('/assets/images/brands.png') }}" alt="">
+                <img src="{{ asset('/assets/images/brands1.png') }}" alt="">
             </div>
         </div>
     </div>
 </section>
-
-
-<section class="benefits">
+<section class="benefits" id="benefits">
     <div class="container">
         <div class="row text-center pb-70">
             <div class="col-lg-12 col-12 header-wrap">
@@ -58,10 +56,10 @@
                 <div class="item-benefit">
                     <img src="{{ asset('/assets/images/ic_globe.png') }}" class="icon" alt="">
                     <h3 class="title">
-                        Diversity
+                        Enhanced Skills
                     </h3>
                     <p class="support">
-                        Learn from anyone around the <br> world and get a new skills
+                        Becoming more proficient in <br> phone repair and maintenance.
                     </p>
                 </div>
             </div>
@@ -69,10 +67,11 @@
                 <div class="item-benefit">
                     <img src="{{ asset('/assets/images/ic_globe-1.png') }}" class="icon" alt="">
                     <h3 class="title">
-                        A.I Guideline
+                        Industry Recognition
                     </h3>
                     <p class="support">
-                        Lara will help you to choose <br> which path that suitable for you
+                        Acknowledgment from experts, validating your expertise as a <br> proficient phone technician.
+
                     </p>
                 </div>
             </div>
@@ -80,10 +79,10 @@
                 <div class="item-benefit">
                     <img src="{{ asset('/assets/images/ic_globe-2.png') }}" class="icon" alt="">
                     <h3 class="title">
-                        1-1 Mentoring
+                        Professional Advice
                     </h3>
                     <p class="support">
-                        We will ensure that you will get <br> what you really do need
+                        Receiving guidance and support from experts in understanding <br> and mastering the material.
                     </p>
                 </div>
             </div>
@@ -91,17 +90,16 @@
                 <div class="item-benefit">
                     <img src="{{ asset('/assets/images/ic_globe-3.png') }}" class="icon" alt="">
                     <h3 class="title">
-                        Future Job
+                        Career Opportunities
                     </h3>
                     <p class="support">
-                        Get your dream job in your dream <br> company together with us
+                        Opening doors to new job opportunities or positions within <br> the mobile technician industry
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <section class="steps">
     <div class="container">
         <div class="row item-step pb-70">
@@ -110,12 +108,15 @@
             </div>
             <div class="col-lg-6 col-12 text-left copywriting">
                 <p class="story">
-                    BETTER CAREER
+                    Advancing Career
                 </p>
                 <h2 class="primary-header">
-                    Prepare The Journey
+                    Kickstart Journey
                 </h2>
                 <p class="support">
+                    Invest in your future success with our career-focused training, designed to equip you with the
+                    skills and confidence to
+                    thrive in today's competitive job market.
                     Learn from anyone around the <br> world and get a new skills
                 </p>
                 <p class="mt-5">
@@ -128,14 +129,14 @@
         <div class="row item-step pb-70">
             <div class="col-lg-6 col-12 text-left copywriting pl-150">
                 <p class="story">
-                    STUDY HARDER
+                    Increase Study Intensity
                 </p>
                 <h2 class="primary-header">
-                    Finish The Project
+                    Complete The Project
                 </h2>
                 <p class="support">
-                    Each of you will be joining the private group and also <br> working together with team members
-                    on project
+                    To ensure project completion, it's crucial to elevate the intensity of your study sessions and focus
+                    on <br> key objectives.
                 </p>
                 <p class="mt-5">
                     <a href="#" class="btn btn-master btn-secondary me-3">
@@ -154,186 +155,111 @@
             </div>
             <div class="col-lg-6 col-12 text-left copywriting">
                 <p class="story">
-                    END GAME
+                    Wrap Up The Bootcamp Journey
                 </p>
                 <h2 class="primary-header">
                     Big Demo Day
                 </h2>
                 <p class="support">
-                    Learn how to speaking in public to demonstrate your <br> final project and receive the important
-                    feedbacks
+                    Wrap up your bootcamp experience with a sense of accomplishment, knowing you've grown both
+                    personally and <br> professionally.
                 </p>
                 <p class="mt-5">
                     <a href="#" class="btn btn-master btn-secondary me-3">
-                        Showcase
+                        Take Action
                     </a>
                 </p>
             </div>
         </div>
     </div>
 </section>
-
-<section class="pricing">
+<section class="pricing mt-5 mb-5">
     <div class="container">
-        <div class="row pb-70">
-            <div class="col-lg-5 col-12 header-wrap copywriting">
-                <p class="story">
-                    GOOD INVESTMENT
-                </p>
-                <h2 class="primary-header text-white">
-                    Start Your Journey
-                </h2>
-                <p class="support">
-                    Learn how to speaking in public to demonstrate your <br> final project and receive the important
-                    feedbacks
-                </p>
-                <p class="mt-5">
-                    <a href="#" class="btn btn-master btn-thirdty me-3">
-                        View Syllabus
-                    </a>
-                </p>
-            </div>
-            <div class="col-lg-7 col-12">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <div class="table-pricing paket-gila">
-                            <p class="story text-center">
-                                GILA BELAJAR
-                            </p>
-                            <h1 class="price text-center">
-                                $280K
-                            </h1>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Pro Techstack Kit
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    iMac Pro 2021 & Display
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    1-1 Mentoring Program
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Final Project Certificate
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Offline Course Videos
-                                </p>
-                                <div class=" clear">
-                                </div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Future Job Opportinity
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Premium Design Kit
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Website Builder
-                                </p>
-                                <div class="clear"></div>
-                            </div>
-                            <p>
-                                <a href="{{ route('checkout','gila-belajar') }}"
-                                    class="btn btn-master btn-primary w-100 mt-3">
-                                    Take This Plan
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                        <div class="table-pricing paket-biasa">
-                            <p class="story text-center">
-                                BARU MULAI
-                            </p>
-                            <h1 class="price text-center">
-                                $140K
-                            </h1>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    1-1 Mentoring Program
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Final Project Certificate
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing mb-4">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Offline Course Videos
-                                </p>
-                                <div class="clear"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <div class="item-benefit-pricing">
-                                <img src="{{ asset('/assets/images/ic_check.svg') }}" alt="">
-                                <p>
-                                    Future Job Opportinity
-                                </p>
-                                <div class="clear"></div>
-                            </div>
-                            <p>
-                                <a href="{{ route('checkout','baru-belajar') }}"
-                                    class="btn btn-master btn-secondary w-100 mt-3">
-                                    Start With This Plan
-                                </a>
-                            </p>
-                        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 ">
+                <div class="row ">
+                    <div class="col-md-12 copywriting mt-5  mb-5 text-center">
+                        <p class="story">
+                            Discover Exclusive Deals
+                        </p>
+                        <h1 class="header text-light">
+                            Unlock Incredible <span class="text-custom"> Offers in Our </span> Price List
+                        </h1>
+                        <p class="support">
+                            Explore our enticing price list to discover a variety of attractive offers and competitive
+                            prices. Find top-quality products at special prices that will tempt you to shop right away
+
+                        </p>
+                        <p class="cta">
+                            <a href="#" class="btn btn-master btn-primary-custom">
+                                Get Started
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row pb-70">
-            <div class="col-lg-12 col-12 text-center">
-                <img src="{{ asset('/assets/images/brands.png') }}" height="30" alt="">
+    </div>
+</section>
+<section class="price mt-5" id="price">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card price-card border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="text-center">Basic</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-primary">$99</h2>
+                        <ul class="list-unstyled text-left">
+                            <li><i class="fas fa-check-circle text-primary"></i> Basic Features</li>
+                            <li><i class="fas fa-check-circle text-primary"></i> Limited Support</li>
+                            <li><i class="fas fa-times-circle text-danger"></i> No Extra Services</li>
+                        </ul>
+                        <button class="btn btn-primary">Purchase Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card price-card border-warning">
+                    <div class="card-header bg-warning">
+                        <h3 class="text-center">Standard</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-warning">$199</h2>
+                        <ul class="list-unstyled text-left">
+                            <li><i class="fas fa-check-circle text-warning"></i> All Basic Features</li>
+                            <li><i class="fas fa-check-circle text-warning"></i> 24/7 Support</li>
+                            <li><i class="fas fa-times-circle text-danger"></i> No Extra Services</li>
+                        </ul>
+                        <button class="btn btn-warning">Purchase Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card price-card border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="text-center">Premium</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-danger">$299</h2>
+                        <ul class="list-unstyled text-left">
+                            <li><i class="fas fa-check-circle text-danger"></i> All Basic & Standard
+                                Features</li>
+                            <li><i class="fas fa-check-circle text-danger"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check-circle text-danger"></i> Extra Services Included
+                            </li>
+                        </ul>
+                        <button class="btn btn-danger">Purchase Now</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
     <div class="container">
         <div class="row text-center pb-70">
             <div class="col-lg-12 col-12 header-wrap">
@@ -341,69 +267,50 @@
                     SUCCESS STUDENTS
                 </p>
                 <h2 class="primary-header">
-                    We Really Love Laracamp
+                    We Really Love SkillSphere
                 </h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-10 col-12">
-                <div class="row">
-                    <div class="col-lg-4 col-12">
-                        <div class="item-review">
-                            <img src="{{ asset('/assets/images/stars.svg') }}" alt="">
-                            <p class="message">
-                                I was not really into code but after they teach me how to train my logic then I was
-                                really fall in love with code
-                            </p>
-                            <div class="user">
-                                <img src="{{ asset('/assets/images/fanny_photo.png') }}" class="photo" alt="">
-                                <div class="info">
-                                    <h4 class="name">
-                                        Fanny
-                                    </h4>
-                                    <p class="role">
-                                        Developer at Google
-                                    </p>
-                                </div>
+                <div class="row ">
+                    <div class="col-lg-4 col-12 testimoni">
+                        <div class="card border-0 item-review">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('/template/auth/img/undraw_profile_1.svg') }}"
+                                    class="img-fluid rounded-circle mb-3" width="168" height="168">
+                                <h5 class="name mb-3">Beatrice</h5>
+                                <p class="message">"Joining this bootcamp was the best decision I've ever made.
+                                    It
+                                    provided me with the necessary tools and resources to
+                                    succeed in a competitive job market."</p>
+                                <small class="text-muted">QA at Facebook</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-12">
-                        <div class="item-review">
-                            <img src="{{ asset('/assets/images/stars.svg') }}" alt="">
-                            <p class="message">
-                                Code is really important if we want to build a company and strike to the win
-                            </p>
-                            <div class="user">
-                                <img src="{{ asset('/assets/images/angga.png') }}" class="photo" alt="">
-                                <div class="info">
-                                    <h4 class="name">
-                                        Angga
-                                    </h4>
-                                    <p class="role">
-                                        CEO at BWA Corp
-                                    </p>
-                                </div>
+                        <div class="card border-0 item-review">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('/template/auth/img/undraw_profile_2.svg') }}" alt="Testimonial"
+                                    class="img-fluid rounded-circle mb-3" width="168" height="168">
+                                <h5 class="name mb-3">Dinar</h5>
+                                <p class="message">"The bootcamp exceeded my expectations. I was able to network with
+                                    industry professionals
+                                    and secure job opportunities
+                                    even before completing the program."</p>
+                                <small class="text-muted">Mobile Technicion</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-12">
-                        <div class="item-review">
-                            <img src="{{ asset('/assets/images/stars.svg') }}" alt="">
-                            <p class="message">
-                                My background is design and art but I do really love how to make my design working
-                                in the development phase
-                            </p>
-                            <div class="user">
-                                <img src="{{ asset('/assets/images/beatrice.png') }}" class="photo" alt="">
-                                <div class="info">
-                                    <h4 class="name">
-                                        Beatrice
-                                    </h4>
-                                    <p class="role">
-                                        QA at Facebook
-                                    </p>
-                                </div>
+                        <div class="card border-0 item-review">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('/template/auth/img/undraw_profile_3.svg') }}"
+                                    class="img-fluid rounded-circle mb-3" width="168" height="168">
+                                <h5 class="name mb-3">Leo</h5>
+                                <p class="message">"Life-changing experience! The bootcamp equipped me with the skills
+                                    and confidence to pursue my dream career."</p>
+                                <small class="text-muted">Mobile Developer</small>
                             </div>
                         </div>
                     </div>
@@ -411,7 +318,7 @@
                 <div class="row copyright">
                     <div class="col-lg-12 col-12">
                         <p>
-                            All Rights Reserved. Copyright Laracamp BWA Indonesia.
+                            All Rights Reserved. Copyright SkillSphere.
                         </p>
                     </div>
                 </div>

@@ -88,7 +88,7 @@ class RoleController extends Controller
         if (!empty($permissions)) {
             $role->syncPermissions($permissions);
         }
-        return redirect()->route('roles.index')
+        return redirect()->back()
             ->with('success', 'Role updated successfully');
     }
     // Request delete with role

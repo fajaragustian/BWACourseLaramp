@@ -28,9 +28,20 @@ class PermissionTableSeeder extends Seeder
             'list-product',
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            'list-discount',
+            'create-discount',
+            'edit-discount',
+            'delete-discount',
+            'list-transaction',
+            'create-transaction',
+            'edit-transaction',
+            'delete-transaction',
+            'list-camp',
+            'create-camp',
+            'edit-camp',
+            'delete-camp',
         ];
-
         // Looping and Inserting Array's Permissions into Permission Table
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

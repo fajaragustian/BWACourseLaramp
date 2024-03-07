@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon.png') }}">
 
-    <title>Password Update</title>
+    <title>Skill Sphere</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -34,7 +34,11 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block ">
+                                <img src="{{ asset('/assets/images/banner.png') }}" alt="Skill Sphere"
+                                    title="Skill Sphere" width="500px" height="400px"
+                                    style="margin: 25px 20px 12px 20px">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">

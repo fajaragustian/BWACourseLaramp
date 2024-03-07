@@ -73,14 +73,14 @@ body {
 
 .testimonials {
     background: #f7f7fb;
-    margin-top: 370px;
     padding: 70px 0 70px 0;
 }
 
-.testimonials .item-review {
+.item-review {
     border-radius: 13px;
     background: #fff;
     padding: 20px;
+    min-height: 550px;
 }
 
 .testimonials .item-review .message,
@@ -120,16 +120,39 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
-
-.pricing {
-    margin-top: 100px;
-    background: #4d1dab;
-    padding-top: 70px;
-    max-height: 620px;
+/* price */
+.price-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.price-card:hover {
+    transform: translateY(-10px);
+}
+.price-card .card-header {
+    border-radius: 15px 15px 0 0;
+    padding: 20px;
+}
+.price-card .card-body {
+    padding: 20px;
+}
+.price-card .btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+#price-custom {
+    border-radius: 30px;
+}
+#price-custom li {
+    font-size: 15px;
+    font-weight: 500;
+    word-spacing: -2px;
+    text-indent: 1px;
 }
 
-.pricing .copywriting {
-    margin-top: 80px;
+.pricing {
+    background: #4d1dab;
 }
 
 .pricing .support {
@@ -143,7 +166,7 @@ body {
 .pricing .table-pricing {
     background: #fff;
     border-radius: 40px;
-    padding: 30px;
+    padding: 5px;
     border: 1px solid #eae8f5;
 }
 
@@ -202,7 +225,7 @@ body {
 
 .btn-master,
 .btn-thirdty,
-.btn-primary,
+.btn-primary-custom,
 .btn-secondary {
     padding: 11px 36px 11px 36px;
     border-radius: 100px;
@@ -215,19 +238,27 @@ body {
     color: #fff;
 }
 
-.btn-primary {
+.btn-primary-custom {
     background: #7839f3;
     color: #fff;
 }
 
-.btn-primary:hover {
+.btn-primary-custom:hover {
+    color: #ffff;
     background: #31b380;
 }
-
+.text-custom {
+    color: #31b380;
+}
 .story {
     font-weight: 600;
     font-size: 16px;
     color: #31b380;
+}
+.card-title,
+.card-text {
+    color: #31b380;
+    word-spacing: 2px;
 }
 
 .primary-header {
@@ -315,9 +346,11 @@ body {
 }
 
 .banner .brands img {
-    height: 30px;
+    max-height: 43px;
 }
-
+.testimoni {
+    max-height: 800px;
+}
 .dashboard .table tr {
     border: 1px solid #fff;
 }

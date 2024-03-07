@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon.png') }}">
 
-    <title>Reset Password </title>
+    <title>Skill Sphere </title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -37,8 +38,8 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block ">
                                 <a href="{{ route('welcome') }}">
-                                    <img src="{{ asset('/assets/images/banner.png') }}" alt="Course Laracamp"
-                                        title="Course Laracamp" width="500px" height="400px"
+                                    <img src="{{ asset('/assets/images/banner.png') }}" alt="Skill Sphere"
+                                        title="Skill Sphere" width="500px" height="400px"
                                         style="margin: 25px 20px 12px 20px">
                                 </a>
                             </div>

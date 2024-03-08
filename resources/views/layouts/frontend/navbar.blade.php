@@ -13,10 +13,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Program</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#benefits">Benefits</a>
+                    <a class="nav-link" href="#price">Pricing</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#testimonials">Testimonials</a>
@@ -29,14 +26,13 @@
                     <a class="dropdown-toggle text-decoration-none text-dark" href="#" role="button"
                         id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline small">{{ Auth::user()->name }}</span>
-                        @if (Auth::user()->avatar != null )
+                        @if (!empty(Auth::user()->avatar) )
                         <img src="{{ asset('/storage/photos/'.Auth::user()->avatar) }}"
                             class="img-profile rounded-circle" srcset="" width="35px" height="35px">
                         @else
-                        <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"
+                        <img src="{{ asset('template/auth/img/undraw_profile.svg') }}"
                             class="img-profile rounded-circle" srcset="" width="35px" height="35px">
                         @endif
-
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenulink" style=" right:0; left:0;">
                         <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>

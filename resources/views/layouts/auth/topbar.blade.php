@@ -18,11 +18,11 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                @if (Auth::user()->avatar!= null )
+                @if (!empty(Auth::user()->avatar) )
                 <img src="{{ asset('/storage/photos/'.Auth::user()->avatar) }}" class="img-profile rounded-circle"
                     srcset="" width="35px" height="35px">
                 @else
-                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="img-profile rounded-circle"
+                <img src="{{ asset('template/auth/img/undraw_profile.svg') }}" class="img-profile rounded-circle"
                     srcset="" width="35px" height="35px">
                 @endif
             </a>

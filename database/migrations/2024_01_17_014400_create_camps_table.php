@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('camps', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
-            $table->string('slug', 100);
+            $table->string('slug', 100)->unique();
             $table->string('image')->nullable();
             $table->integer('price')->unsigned()->nullable()->default(12);
+            $table->string('level', ['basic', 'intermediate', 'professional'])->default('basic');
+            $table->string('desc')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

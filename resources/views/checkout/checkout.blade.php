@@ -23,8 +23,7 @@
                                 {{ $camp->title }}
                             </h1>
                             <p class="description">
-                                Bootcamp ini akan mengajak Anda untuk belajar penuh mulai dari pengenalan dasar sampai
-                                membangun sebuah projek asli
+                                {{ $camp->desc }}
                             </p>
                         </div>
                     </div>

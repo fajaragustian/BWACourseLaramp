@@ -22,15 +22,14 @@
                 @include('components.flash-message')
                 <div class="row">
                     <div class="col-md-4 pt-md-2">
-                        @if (Auth::user()->avatar != null)
-                        <img src="{{ asset('/storage/photos/'.Auth::user()->avatar) }}"
+                        @if (!empty($user->avatar))
+                        <img src="{{ asset('/storage/photos/'.$user->avatar) }}"
                             class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px"
                             title="profile">
                         @else
-                        <img src=" https://ui-avatars.com/api/?name={{ Auth::user()->name }}/?rounded=true"
+                        <img src="{{ asset('template/auth/img/undraw_profile.svg') }}"
                             class="img-profile rounded-circle mx-auto d-block" srcset="" width="190px" height="190px">
                         @endif
-
                     </div>
                     <div class="col-md-8">
                         <form class="user" action="{{ route('users.update', $user->id) }}" method="POST"

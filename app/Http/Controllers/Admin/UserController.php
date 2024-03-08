@@ -39,8 +39,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate(
-            $request,
+        $request->validate(
             [
                 'name' => 'required|string|min:2|max:100',
                 'email' => 'required|email|unique:users,email',
@@ -58,7 +57,14 @@ class UserController extends Controller
         );
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-
+        $input = $request->all();
+        // Unggah avatar jika ada yang diunggah
+        if ($request->hasFile('avatar')) {
+            $file = $request->file('avatar');
+            $fileName = date('YmdHi') . '.' . $file->getClientOriginalExtension();
+            $file->move(storage_path('app/public/photos'), $fileName);
+            $input['avatar'] = $fileName;
+        }
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
@@ -69,26 +75,24 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $roles = Role::find($id);
-        $user = User::find($id);
+        $roles = Role::findOrFail($id);
+        $user = User::findOrFail($id);
         return view('auth.admin.users.show', compact('user', 'roles'));
     }
 
     public function edit($id)
     {
         //
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
-
         return view('auth.admin.users.edit', compact('user', 'roles', 'userRole'));
     }
 
     public function update(Request $request, $id)
     {
         //
-        $this->validate(
-            $request,
+        $request->validate(
             [
                 'name' => 'required|string|min:2|max:100',
                 'email' => 'required|email|unique:users,email,' . $id,
@@ -104,14 +108,14 @@ class UserController extends Controller
                 'roles' => 'required'
             ]
         );
-
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
             $input = Arr::except($input, array('password'));
         }
-        $user = User::find($id);
+
+        $user = User::findOrFail($id);
         // Update avatar jika ada yang diunggah
         if ($request->hasFile('avatar')) {
             // Hapus gambar lama jika ada
@@ -121,7 +125,7 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $fileName = date('YmdHi') . '.' . $file->getClientOriginalExtension();
             $file->move(storage_path('app/public/photos'), $fileName);
-            $user->avatar = $fileName;
+            $input['avatar'] = $fileName;
         }
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
@@ -132,8 +136,9 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
-        User::find($id)->delete();
+        $user = User::findOrFail($id);
+        Storage::delete('public/photos/' . $user->avatar);
+        $user->delete($id);
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
     }
@@ -158,20 +163,8 @@ class UserController extends Controller
             'country' => 'nullable|string|min:4',
             'region' => 'nullable|string|min:4',
         ]);
-
-        $user = User::find($id);
-
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'working' => $request->working,
-            'university' => $request->university,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'country' => $request->country,
-            'region' => $request->region,
-        ]);
+        $user = User::findOrFail($id);
+        $input = $request->all();
         // Update avatar jika ada yang diunggah
         if ($request->hasFile('avatar')) {
             // Hapus gambar lama jika ada
@@ -181,9 +174,9 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $fileName = date('YmdHi') . '.' . $file->getClientOriginalExtension();
             $file->move(storage_path('app/public/photos'), $fileName);
-            $user->avatar = $fileName;
+            $input['avatar'] = $fileName;
         }
-        $user->save();
+        $user->update($input);
         return back()->with('success', 'Profile updated!');
     }
     // Change Password

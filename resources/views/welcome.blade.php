@@ -204,58 +204,27 @@
 <section class="price mt-5" id="price">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4">
+            @foreach ($camp as $c)
+            <div class="col-md-4 mb-4">
                 <div class="card price-card border-primary">
                     <div class="card-header bg-primary text-white">
                         <h3 class="text-center">Basic</h3>
                     </div>
                     <div class="card-body text-center">
-                        <h2 class="text-primary">$99</h2>
+                        <h2 class="text-primary">Rp {{ $c->price }}</h2>
                         <ul class="list-unstyled text-left">
                             <li><i class="fas fa-check-circle text-primary"></i> Basic Features</li>
                             <li><i class="fas fa-check-circle text-primary"></i> Limited Support</li>
                             <li><i class="fas fa-times-circle text-danger"></i> No Extra Services</li>
                         </ul>
-                        <button class="btn btn-primary">Purchase Now</button>
-                    </div>
-                </div>
-            </div>
+                        <a href="{{ route('checkout',$c->slug )  }}" type="button" class="btn btn-primary">Purchase
+                            Now</a>
 
-            <div class="col-md-4">
-                <div class="card price-card border-warning">
-                    <div class="card-header bg-warning">
-                        <h3 class="text-center">Standard</h3>
-                    </div>
-                    <div class="card-body text-center">
-                        <h2 class="text-warning">$199</h2>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-warning"></i> All Basic Features</li>
-                            <li><i class="fas fa-check-circle text-warning"></i> 24/7 Support</li>
-                            <li><i class="fas fa-times-circle text-danger"></i> No Extra Services</li>
-                        </ul>
-                        <button class="btn btn-warning">Purchase Now</button>
                     </div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="col-md-4">
-                <div class="card price-card border-danger">
-                    <div class="card-header bg-danger text-white">
-                        <h3 class="text-center">Premium</h3>
-                    </div>
-                    <div class="card-body text-center">
-                        <h2 class="text-danger">$299</h2>
-                        <ul class="list-unstyled text-left">
-                            <li><i class="fas fa-check-circle text-danger"></i> All Basic & Standard
-                                Features</li>
-                            <li><i class="fas fa-check-circle text-danger"></i> 24/7 Support</li>
-                            <li><i class="fas fa-check-circle text-danger"></i> Extra Services Included
-                            </li>
-                        </ul>
-                        <button class="btn btn-danger">Purchase Now</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>

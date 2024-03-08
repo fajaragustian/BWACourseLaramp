@@ -50,6 +50,27 @@
             </div>
         </div>
     </li>
+    @can('list-camp')
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Bootcamps" aria-expanded="true"
+            aria-controls="Bootcamps">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Bootcamps</span>
+        </a>
+        <div id="Bootcamps" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Other Pages:</h6>
+
+                <a class="collapse-item" href="{{ route('camps.index') }}"> <i class="fas fa-fw fa-users"></i>
+                    Camps</a>
+                <a class="collapse-item" href="{{ route('camps.index') }}"> <i class="fas fa-fw fa-users"></i>
+                    Benetfits</a>
+
+            </div>
+        </div>
+    </li>
+    @endcan
     @can('list-product')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('products.index') }}">
@@ -72,14 +93,6 @@
             <span>Manage Transaction</span></a>
     </li>
     @endcan
-    @can('list-camp')
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('camps.index') }}">
-            <i class="fas fa-fw fa-solid  fa-dollar-sign"></i>
-            <span>Manage Camp</span></a>
-    </li>
-    @endcan
-
     @role('User')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('transaction.index') }}">

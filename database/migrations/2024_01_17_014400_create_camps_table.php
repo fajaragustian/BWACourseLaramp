@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug', 100)->unique();
             $table->string('image')->nullable();
             $table->integer('price')->unsigned()->nullable()->default(12);
-            $table->string('level', ['basic', 'intermediate', 'professional'])->default('basic');
+            $table->enum('level', ['Basic', 'Proficient', 'Expert'])->default('Basic');
             $table->string('desc')->nullable();
             $table->timestamps();
             $table->softDeletes();

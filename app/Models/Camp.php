@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class Camp extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
-    protected $fillable = ['title', 'price', 'image', 'slug', 'desc'];
+    protected $fillable = ['title', 'price', 'image', 'slug', 'desc', 'level'];
     // Jika user sebut sudah terdafatar pada kelas tersebut maka tidak bisa kembali
     public function getIsRegisteredAttribute()
     {

@@ -208,7 +208,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card price-card border-primary">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="text-center">Basic</h3>
+                        <h3 class="text-center">{{ $c->level }}</h3>
                     </div>
                     <div class="card-body text-center">
                         <h2 class="text-primary">Rp {{ $c->price }}</h2>
